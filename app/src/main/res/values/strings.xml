@@ -3,5 +3,22 @@
 
     <string name="app_name">MeteoMap</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_quit">Quitter</string>
+    <string name="title_choose">Entrez votre ville</string>
+    <string name="validate">Valider</string>
+    <string name="preference_save">Enregistrement effectué</string>
+    <string name="change_city">Changer de ville</string>
+    <string name="open_weather_maps_app_id">5bea34cf959cbb329ca20603b1482ab7</string>
+    <string name="weather_sunny"></string>
+    <string name="weather_clear_night"></string>
+    <string name="weather_foggy"></string>
+    <string name="weather_cloudy"></string>
+    <string name="weather_rainy"></string>
+    <string name="weather_snowy"></string>
+    <string name="weather_thunder"></string>
+    <string name="weather_drizzle"></string>
+    <string name="place_not_found">La ville n'a pas été trouvée</string>
+    <string name="title_activity_meteo">MeteoActivity</string>
 
 </resources>
