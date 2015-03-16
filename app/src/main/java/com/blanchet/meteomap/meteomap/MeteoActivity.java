@@ -55,6 +55,6 @@ public class MeteoActivity extends ActionBarActivity {
     public void changeCity(String city){
         MeteoFragment wf = (MeteoFragment)getSupportFragmentManager().findFragmentById(R.id.container);
         wf.changeCity(city);
-        new CityPreference(this).setCity(city);
+        CityPreference.setCityPreference(city);
     }
 }

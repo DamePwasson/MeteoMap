@@ -18,7 +18,11 @@
     <string name="weather_snowy"></string>
     <string name="weather_thunder"></string>
     <string name="weather_drizzle"></string>
-    <string name="place_not_found">La ville n'a pas été trouvée</string>
+    <string name="place_not_found">La ville n\'a pas été trouvée</string>
     <string name="title_activity_meteo">MeteoActivity</string>
+    <string name="confirm_quit_title">"Quitter l'application"</string>
+    <string name="confirm_quit">"Voulez vous quitter l'application ?"</string>
+    <string name="btn_no">Nom</string>
+    <string name="btn_yes">Oui</string>
 
 </resources>

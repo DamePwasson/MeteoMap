@@ -7,17 +7,13 @@ import android.content.SharedPreferences;
  * Created by Blanchet on 12/03/2015.
  */
 public class CityPreference {
-    SharedPreferences prefs;
+    static String town;
 
-    public CityPreference(Activity activity){
-        prefs = activity.getPreferences(Activity.MODE_PRIVATE);
+    public static void setCityPreference(String p){
+        CityPreference.town = p;
     }
 
-    String getCity(){
-        return prefs.getString("city", "Nantes, FR");
-    }
-
-    void setCity(String city){
-        prefs.edit().putString("city", city).commit();
+    public static String getCityPreference(){
+        return (CityPreference.town);
     }
 }

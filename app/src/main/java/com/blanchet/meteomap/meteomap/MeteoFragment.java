@@ -49,7 +49,7 @@ public class MeteoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf");
-        updateWeatherData(new CityPreference(getActivity()).getCity());
+        updateWeatherData(CityPreference.getCityPreference());
     }
 
     private void updateWeatherData(final String city){
