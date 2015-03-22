@@ -39,4 +39,16 @@
         android:layout_alignEnd="@+id/editChoose"
         android:layout_alignLeft="@+id/editChoose"
         android:layout_alignStart="@+id/editChoose" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pBAsync"
+        android:layout_below="@+id/buttonChoose"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

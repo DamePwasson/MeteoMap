@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -19,54 +20,68 @@ public class MainActivity extends ActionBarActivity {
     protected String KEY = "preferenceTown";
     protected String PREF_TOWN = "PREF_TOWN";
 
+    private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.pBAsync);
 
         String value = getPreference(KEY);
 
         final Button btnSave = (Button) findViewById(R.id.buttonChoose);
         btnSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new LongOperation().execute("");
-
-                final EditText town = (EditText) findViewById(R.id.editChoose);
-                final String myTown = town.getText().toString();
-                setPreference(KEY, myTown);
-                Intent goMeteo = new Intent(MainActivity.this, MeteoActivity.class);
-                startActivity(goMeteo);
-                MainActivity.this.finish();
+                BigCalcul calcul = new BigCalcul();
+                calcul.execute();
             }
         });
     }
-    private class LongOperation extends AsyncTask<String, Void, String> {
+    private class BigCalcul extends AsyncTask<Void, Integer, Void>
+    {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast
+                 .makeText(getApplicationContext(), "Enregistrement", Toast.LENGTH_LONG)
+                 .show();
+        }
 
         @Override
-        protected String doInBackground(String... params) {
-            for (int i = 0; i < 5; i++) {
+        protected void onProgressUpdate(Integer... values){
+            super.onProgressUpdate(values);
+            mProgressBar.setProgress(values[0]);
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0){
+
+            final EditText town = (EditText) findViewById(R.id.editChoose);
+            final String myTown = town.getText().toString();
+            setPreference(KEY, myTown);
+
+            int progress;
+            for (progress=0;progress<=100;progress++)
+            {
                 try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    Thread.interrupted();
+                    Thread.sleep(300);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
                 }
+                publishProgress(progress);
+                progress++;
             }
-            return "Executed";
+            return null;
         }
 
         @Override
-        protected void onPostExecute(String result) {
-            TextView txt = (TextView) findViewById(R.id.output);
-            txt.setText("Executed"); // txt.setText(result);
-            // might want to change "executed" for the returned string passed
-            // into onPostExecute() but that is upto you
+        protected void onPostExecute(Void result){
+            Intent goMeteo = new Intent(MainActivity.this, MeteoActivity.class);
+            startActivity(goMeteo);
+            MainActivity.this.finish();
         }
-
-        @Override
-        protected void onPreExecute() {}
-
-        @Override
-        protected void onProgressUpdate(Void... values) {}
     }
 
     /**
