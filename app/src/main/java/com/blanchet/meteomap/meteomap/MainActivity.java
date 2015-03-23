@@ -34,6 +34,11 @@ public class MainActivity extends ActionBarActivity {
         final Button btnSave = (Button) findViewById(R.id.buttonChoose);
         btnSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                final EditText town = (EditText) findViewById(R.id.editChoose);
+                final String myTown = town.getText().toString();
+                setPreference(KEY, myTown);
+
                 BigCalcul calcul = new BigCalcul();
                 calcul.execute();
             }
@@ -43,10 +48,6 @@ public class MainActivity extends ActionBarActivity {
     {
         @Override
         protected void onPreExecute() {
-            super.onPreExecute();
-            Toast
-                 .makeText(getApplicationContext(), "Enregistrement", Toast.LENGTH_LONG)
-                 .show();
         }
 
         @Override
@@ -58,15 +59,12 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected Void doInBackground(Void... arg0){
 
-            final EditText town = (EditText) findViewById(R.id.editChoose);
-            final String myTown = town.getText().toString();
-            setPreference(KEY, myTown);
 
             int progress;
-            for (progress=0;progress<=100;progress++)
+            for (progress=0;progress<=50;progress++)
             {
                 try {
-                    Thread.sleep(300);
+                    Thread.sleep(100);
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 }

@@ -39,7 +39,7 @@ public class MeteoActivity extends ActionBarActivity {
     }
     private void showInputDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("@string/change_city");
+        builder.setTitle("Changer de ville");
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
