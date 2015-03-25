@@ -42,10 +42,6 @@
             android:name=".MeteoActivity"
             android:label="@string/title_activity_meteo" >
         </activity>
-        <activity
-            android:name=".ShowMapActivity"
-            android:label="@string/title_activity_show_map" >
-        </activity>
     </application>
 
 </manifest>

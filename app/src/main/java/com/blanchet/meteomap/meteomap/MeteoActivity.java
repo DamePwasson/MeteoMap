@@ -2,6 +2,7 @@ package com.blanchet.meteomap.meteomap;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -34,9 +35,17 @@ public class MeteoActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.change_city){
             showInputDialog();
+        } else if (item.getItemId() == R.id.visual_city){
+            goToMap();
         }
         return false;
     }
+    private void goToMap(){
+        Intent goMap = new Intent(MeteoActivity.this, MapsActivity.class);
+        startActivity(goMap);
+        MeteoActivity.this.finish();
+    }
+
     private void showInputDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Changer de ville");
