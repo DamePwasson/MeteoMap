@@ -1,5 +1,7 @@
 package com.blanchet.meteomap.meteomap;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -7,6 +9,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity {
 
@@ -60,6 +64,31 @@ public class MapsActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        String city = CityPreference.getCityPreference();
+        LatLng pos = this.getLocationFromAddress(city);
+        if (pos != null)
+            mMap.addMarker(new MarkerOptions().position(pos).title("Marker"));
+    }
+
+    private LatLng getLocationFromAddress(String strAddress){
+
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+
+        try {
+            address = coder.getFromLocationName(strAddress,5);
+            if (address == null) {
+                return null;
+            }
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            return (new LatLng((int)location.getLatitude(), (int)location.getLongitude()));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return (null);
     }
 }
