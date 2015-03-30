@@ -19,7 +19,8 @@ public class MeteoActivity extends ActionBarActivity {
         setContentView(R.layout.activity_meteo);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.container, new MeteoFragment()).commit();
+            getSupportFragmentManager().beginTransaction()
+                                       .add(R.id.container, new MeteoFragment()).commit();
         }
     }
 
@@ -62,7 +63,8 @@ public class MeteoActivity extends ActionBarActivity {
     }
 
     public void changeCity(String city){
-        MeteoFragment wf = (MeteoFragment)getSupportFragmentManager().findFragmentById(R.id.container);
+        MeteoFragment wf = (MeteoFragment)getSupportFragmentManager()
+                           .findFragmentById(R.id.container);
         wf.changeCity(city);
         CityPreference.setCityPreference(city);
     }
