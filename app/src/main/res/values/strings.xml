@@ -24,7 +24,6 @@
     <string name="confirm_quit">"Voulez vous quitter l'application ?"</string>
     <string name="btn_no">Nom</string>
     <string name="btn_yes">Oui</string>
-    <string name="title_activity_show_map">ShowMapActivity</string>
 
     <string name="visual_city">Voir la ville</string>
 
